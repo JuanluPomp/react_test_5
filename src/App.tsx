@@ -1,29 +1,31 @@
-import { useEffect, useState } from "react"
-import type { IProducts } from "./types"
+import { useContext, useEffect} from "react"
 import Products from "./components/Products"
+import SearchForm from "./components/SearchForm"
+import { FiltersContext } from "./context/filters"
+import { useProducts } from "./hooks/useProducts"
 
 
 
 function App() {
-
-  const [products, setProducts] = useState<IProducts[]>([])
+const { filters} = useContext(FiltersContext)
+const {getProducts, filterProducts} = useProducts()
 
   useEffect(() => {
-    fetch(`https://api.escuelajs.co/api/v1/products?offset=0&limit=12`)
-      .then(res => res.json())
-      .then(data => {
-        console.log(data)
-        setProducts(data)
-      })
+    getProducts()
   }, [])
+
+  useEffect(() => {
+    filterProducts()
+  }, [filters]) 
+
+  
   return (
     <>
-      <main className=' container mx-auto'>
-        <h1 className=' text-3xl font-bold text-center mt-10'>Shoping Cart</h1>
-        <Products
-          products={products}
-        />
+      <main className=" container mx-auto">
+        <SearchForm/>
+        <Products/>
       </main>
+       
     </>
   )
 }
