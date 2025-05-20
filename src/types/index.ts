@@ -15,6 +15,6 @@ export interface IProducts {
   }
 
 export interface ProductFilters {
-    category: string,
-    minPrice: number
+    category?: string,
+    minPrice?: number
 }

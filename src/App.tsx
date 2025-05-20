@@ -3,6 +3,7 @@ import Products from "./components/Products"
 import SearchForm from "./components/SearchForm"
 import { FiltersContext } from "./context/filters"
 import { useProducts } from "./hooks/useProducts"
+import CartItem from "./components/cart/CartItem"
 
 
 
@@ -23,6 +24,7 @@ const {getProducts, filterProducts} = useProducts()
     <>
       <main className=" container mx-auto">
         <SearchForm/>
+        <CartItem/>
         <Products/>
       </main>
        

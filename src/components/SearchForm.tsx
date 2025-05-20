@@ -6,9 +6,8 @@ import { FiltersContext } from "../context/filters"
 
 export default function SearchForm() {
     const [filterActive, seFilterActive] = useState(false)
-    const [showwPrice, setShowPrice] = useState('0')
 
-    const {setFilters} = useContext(FiltersContext)
+    const {setFilters, filters} = useContext(FiltersContext)
     const formRef = useRef<HTMLFormElement>(null)
 
     const handleOnSubmit = (e:React.FormEvent<HTMLFormElement>) => {
@@ -21,6 +20,15 @@ export default function SearchForm() {
         }
         console.log(filters)
         setFilters(filters)
+    }
+
+    const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      const data = new FormData()
+      data.set('minPrice', e.target.value)
+      setFilters(prev => ({
+        ...prev,
+         minPrice: Number( e.target.value)
+      }))
     }
 
     const handleCleanFilters= () => {
@@ -44,14 +52,14 @@ export default function SearchForm() {
             </select>
           </div>
           <div className=" flex flex-col space-y-1">
-            <label>Precio minimo: <span>${showwPrice}</span></label>
+            <label>Precio minimo: <span>${filters?.minPrice ?? 0}</span></label>
             <input 
             name="minPrice"
             className=" "
             type="range"
             min='0'
             max='1000'
-            onChange={(e) => setShowPrice(e.target.value)}/>
+            onChange={handleOnChange}/>
           </div>
           
           <button 

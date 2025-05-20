@@ -19,7 +19,7 @@ export function useProducts() {
 
   const filterProducts = () => {
     setProducts(initialProducts.current);
-    if (!filters) {
+    if (!filters ) {
       return;
     }
     console.log("filters desde  el app principal", filters);
@@ -27,7 +27,7 @@ export function useProducts() {
       return prev.filter(
         (product) =>
           product.category.toLocaleLowerCase().trim() ===
-            filters.category.trim() && product.price >= filters.minPrice
+            filters.category?.trim() && product.price >= filters.minPrice!
       );
     });
   };
