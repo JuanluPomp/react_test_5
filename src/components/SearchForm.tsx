@@ -46,7 +46,7 @@ export default function SearchForm() {
             <label>Categoria</label>
             <select name="category" className=" border border-gray-300 p-1 rounded-md">
                 {caregories.map((cat) => (
-                    <option className=" " 
+                    <option className=" "  key={cat}
                     value={cat}>{cat}</option>
                 ))}
             </select>

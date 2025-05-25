@@ -3,7 +3,7 @@ import Products from "./components/Products"
 import SearchForm from "./components/SearchForm"
 import { FiltersContext } from "./context/filters"
 import { useProducts } from "./hooks/useProducts"
-import CartItem from "./components/cart/CartItem"
+import { ToastContainer } from "react-toastify"
 
 
 
@@ -21,10 +21,10 @@ const {getProducts, filterProducts} = useProducts()
 
   
   return (
-    <>
+      <>
+      <ToastContainer/>
       <main className=" container mx-auto">
         <SearchForm/>
-        <CartItem/>
         <Products/>
       </main>
        

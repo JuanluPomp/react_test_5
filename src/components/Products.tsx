@@ -2,9 +2,11 @@
 import {  ShoppingCart } from 'lucide-react';
 import { useContext } from 'react';
 import { FiltersContext } from '../context/filters';
+import { CartContext } from '../context/cart';
 
 export default function Products() {
     const {products} = useContext(FiltersContext)
+    const {addToCart} = useContext(CartContext)
   return (
         <ul className=" bg-white border grid justify-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3  border-gray-300 shadow shadow-sky-500 rounded-sm px-6 py-4 ">
             {products.map(product => (
@@ -20,7 +22,9 @@ export default function Products() {
                         <p>{product.category}</p>
                     </div>
                     <p className=' font-semibold'>Price: <span className=' font-normal'>{product.price}</span></p>
-                    <button className=' flex justify-center items-center gap-2 bg-blue-600   w-full  text-white px-2 py-1 rounded-md cursor-pointer'>
+                    <button
+                        onClick={()=> addToCart(product)} 
+                        className=' flex justify-center items-center gap-2 bg-blue-600   w-full  text-white px-2 py-1 rounded-md cursor-pointer'>
                         <ShoppingCart />
                         Add to cart
                     </button>

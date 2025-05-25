@@ -11,7 +11,6 @@ export function useProducts() {
     fetch(`https://fakestoreapi.com/products?offset=0&limit=12`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setProducts(data);
         initialProducts.current = data;
       });
@@ -22,7 +21,6 @@ export function useProducts() {
     if (!filters ) {
       return;
     }
-    console.log("filters desde  el app principal", filters);
     setProducts((prev) => {
       return prev.filter(
         (product) =>

@@ -1,4 +1,4 @@
-import {  ShoppingCart } from "lucide-react";
+import { CartButton } from "./cart/CartButton";
 
 export default function Navbar() {
   return (
@@ -7,7 +7,7 @@ export default function Navbar() {
         <div className=" flex justify-end items-center gap-4 font-bold uppercase text-white">
             <a href="#">Users</a>
             <a href="#">About</a>
-            <a href="#"><ShoppingCart/></a>
+            <CartButton/>
         </div>
     </nav>
   )
